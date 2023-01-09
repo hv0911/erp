@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const warehouseSchema = new Schema({
+const storeSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
-  eamil: {
+  email: {
     type: String,
   },
   phone: {
@@ -14,7 +14,7 @@ const warehouseSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["ACTIVE", "DE-ACTIVE"],
+    enum: ["Active", "DeActive"],
     required: true,
   },
   address: {
@@ -22,4 +22,4 @@ const warehouseSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Warehouse", warehouseSchema);
+module.exports = mongoose.model("Store", storeSchema);

@@ -4,34 +4,34 @@ const { Schema } = mongoose;
 const contactSchema = new Schema({
   contact_type: {
     type: String, // <-- hold-->
-    enum: ["supplier", "customer"],
+    enum: ["Supplier", "Customer"],
     required: true,
   },
 
-  contactID: {
-    type: String,
-    unique: true,
-  },
+  // contactID: {
+  //   type: String,
+  //   unique: true,
+  // },
 
   name: {
     type: String,
     required: true,
   },
-
-  profile_picture: {
-    public_id: String,
-    url: String,
+  
+  contact_img:{
+    type:String ,
   },
 
+ 
   business_name: String,
 
-  tax_number: Number,
+  tax_number: String,
 
-  opening_balance: Number,
+  // opening_balance: Number,
 
-  pay_term: String,
+  // pay_term: String,
 
-  pay_term_condition: String,
+  // pay_term_condition: String,
 
   email: {
     type: String,
@@ -43,20 +43,36 @@ const contactSchema = new Schema({
 
   alt_mobile_no: Number,
 
-  password: {
-    type: String,
-    required: true,
+//   password: {
+//     type: String,
+//     required: true,
+//   },
+
+  country: {
+     type:Schema.Types.ObjectId ,
+     ref:"Country"
   },
 
-  country: String,
+  state: {
+      type:Schema.Types.ObjectId,
+      ref:"State"
+  },
 
-  state: String,
-
-  city: String,
+  city: {
+      type:Schema.Types.ObjectId,
+      ref:"City"
+  },
 
   address: String,
 
   note: String,
+  
+  status:{
+      type:String ,
+      enum:["Active", "DeActive"] ,
+      default:"Active"
+  }
+  
 });
 
 module.exports = mongoose.model("Contact", contactSchema);
